@@ -1,19 +1,17 @@
 package name.adhikari.sameer.playground.generics;
 
+import java.util.Collection;
 import java.util.LinkedList;
 
-/**
- * Created by samadhik on 12/18/16.
- */
-public class GenericQueueBounded<T> {
+public class GenericQueueWildcard<T> {
 
     private LinkedList<T> list = new LinkedList<T>();
 
-    public void enqueue (T item) {
+    public void enqueue(T item) {
         list.add(item);
     }
 
-    public T dequeue () {
+    public T dequeue() {
         return list.removeFirst();
     }
 
@@ -21,9 +19,22 @@ public class GenericQueueBounded<T> {
         return (list.size() == 0);
     }
 
+    public void addAllFrom(Collection<? extends T> collection) {
+        for (T item : collection) {
+            enqueue(item);
+        }
+    }
+
+    public void addAllTo(Collection<? super T> collection) {
+        while (!isEmpty()) {
+            T item = dequeue();
+            collection.add(item);
+        }
+    }
+
     public static void main(String[] args) {
 
-        GenericQueueBounded<Character> charQueue = new GenericQueueBounded<>();
+        GenericQueueWildcard<Character> charQueue = new GenericQueueWildcard<>();
         for (char letter = 'a'; letter <= 'z'; letter++) {
             charQueue.enqueue(letter);
         }
@@ -33,7 +44,7 @@ public class GenericQueueBounded<T> {
         }
         System.out.println();
 
-        GenericQueueBounded<Integer> intQueue = new GenericQueueBounded<>();
+        GenericQueueWildcard<Integer> intQueue = new GenericQueueWildcard<>();
         for (int i = 1; i <= 26; i++) {
             intQueue.enqueue(i);
         }
