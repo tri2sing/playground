@@ -2,7 +2,7 @@ package name.adhikari.sameer.playground.lambdaslynda.CanonicalExamples;
 
 public class ThreadImpl {
     public static void main(String[] args) {
-        // Annonymous inner class
+        // Anonymous inner class
         Runnable r1 = new Runnable() {
             @Override
             public void run() {
