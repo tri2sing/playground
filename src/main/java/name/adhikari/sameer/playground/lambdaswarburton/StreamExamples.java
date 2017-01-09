@@ -48,6 +48,11 @@ public class StreamExamples {
                 .collect(toList());
         assert (asList(2, 1, 4, 3).equals(combined));
 
+        //Count operation on a stream
+        long count = Stream.of("a", "b", "c")
+                .count();
+        assert(count == 3);
+
         StreamExamples examples = new StreamExamples();
         List<StreamExamples.AlpabetichNumeric> alphanums = asList(
                 examples.new AlpabetichNumeric("a", 80),
@@ -61,13 +66,18 @@ public class StreamExamples {
 
         System.out.println(maxNum.getAlpha() + ", " + maxNum.getNum());
         assert (maxNum.getNum() == 100);
+        assert (maxNum.equals(alphanums.get(2)));
 
         StreamExamples.AlpabetichNumeric minStr = alphanums.stream()
                 .min(Comparator.comparing(value -> value.getAlpha().length()))
                 .get();
         System.out.println(minStr.getAlpha() + ", " + minStr.getNum());
+        assert (minStr.getAlpha().length() == 3);
         assert (minStr.equals(alphanums.get(0)));
 
 
+        int sum = Stream.of(1, 2, 3, 4, 5)
+                .reduce(0, (acc, elem) -> acc + elem);
+        assert (sum == 15);
     }
 }
