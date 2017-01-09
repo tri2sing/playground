@@ -1,4 +1,4 @@
-package name.adhikari.sameer.playground.lambdaslynda.CanonicalExamples;
+package name.adhikari.sameer.playground.lambdaslynda.canonicalexamples;
 
 import java.math.BigInteger;
 import java.util.function.Function;

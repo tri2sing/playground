@@ -1,4 +1,4 @@
-package name.adhikari.sameer.playground.lambdaslynda.CanonicalExamples;
+package name.adhikari.sameer.playground.lambdaslynda.canonicalexamples;
 
 public class CalculatorImpl {
     public static void main(String[] args) {

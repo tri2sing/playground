@@ -1,4 +1,4 @@
-package name.adhikari.sameer.playground.lambdaslynda.CanonicalExamples;
+package name.adhikari.sameer.playground.lambdaslynda.canonicalexamples;
 
 @FunctionalInterface
 public interface Calculator<T extends Number> {

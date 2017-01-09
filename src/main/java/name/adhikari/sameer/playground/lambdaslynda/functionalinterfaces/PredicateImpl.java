@@ -1,4 +1,4 @@
-package name.adhikari.sameer.playground.lambdaslynda.FunctionalInterfaces;
+package name.adhikari.sameer.playground.lambdaslynda.functionalinterfaces;
 
 import java.util.function.Predicate;
 
