@@ -8,13 +8,12 @@ public class DiceTest {
 
     @Test
     public void testRollDiceValidInput() throws Exception {
-        int roll = Dice.rollDice(1, 100);
+        int roll = Dice.rollDiceValue(1, 100);
         assertTrue(1 <= roll && roll <= 100);
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void testDiceRollInvalidInput() {
-        int roll = Dice.rollDice(100, 1);
+        int roll = Dice.rollDiceValue(100, 1);
     }
-
 }
