@@ -3,27 +3,32 @@ package montecarlo;
 public class Bettor {
     private int wagerAttempts;
     private float wagerAmount;
-    private float availableFunds;
+    private float startingCapital;
+    private float [] wagerProgression;
 
-    public Bettor(int wagerAttempts, float wagerAmount, float availableFunds) {
+    public Bettor(int wagerAttempts, float wagerAmount, float startingCapital) {
         this.wagerAttempts = wagerAttempts;
         this.wagerAmount = wagerAmount;
-        this.availableFunds = availableFunds;
+        this.startingCapital = startingCapital;
+        this.wagerProgression = null;
     }
 
     public float placeWagers() {
-        float resultingFunds = availableFunds;
+        wagerProgression = new float[wagerAttempts];
+        float remainingFunds = startingCapital;
         for (int i = 0; i < wagerAttempts; i++) {
-            if (resultingFunds < 0) {
-                return 0;
-            }
             if (Dice.rollDiceIsAWin()) {
-                resultingFunds += wagerAmount;
+                remainingFunds += wagerAmount;
             } else {
-                resultingFunds -= wagerAmount;
+                remainingFunds -= wagerAmount;
             }
+            wagerProgression[i] = remainingFunds;
         }
-        return resultingFunds;
+        return remainingFunds;
+    }
+
+    public float [] getWagerProgression() {
+        return wagerProgression;
     }
 
     public static void main(String[] args) {
