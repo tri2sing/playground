@@ -32,9 +32,9 @@ public class Plotter extends Application {
             series.setName(String.valueOf(i));
             lineChart.getData().add(series);
 
-            Bettor bettor = new Bettor(10000, 100, 10000);
-            bettor.placeWagers();
-            float [] progression = bettor.getWagerProgression();
+            SimpleBettor simpleBettor = new SimpleBettor(10000, 100, 10000);
+            simpleBettor.placeWagers();
+            float [] progression = simpleBettor.getWagerProgression();
             series.getData().addAll(
                     IntStream.range(0, progression.length)
                     .mapToObj(k -> new XYChart.Data<>(k, progression[k]))

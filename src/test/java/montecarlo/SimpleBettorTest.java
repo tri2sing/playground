@@ -7,20 +7,20 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-public class BettorTest {
+public class SimpleBettorTest {
 
     @Test
     public void IF_noPlaceWagers_THEN_getWagerProgressions_RETURNS_Null() throws Exception {
-        Bettor bettor = new Bettor(100, 100, 10000);
-        float[] wagerProgression = bettor.getWagerProgression();
+        SimpleBettor simpleBettor = new SimpleBettor(100, 100, 10000);
+        float[] wagerProgression = simpleBettor.getWagerProgression();
         assertThat(wagerProgression, is(nullValue()));
     }
 
     @Test
     public void IF_placeWagers_THEN_getWagerProgressions_RETURNS_NonNull() throws Exception {
-        Bettor bettor = new Bettor(100, 100, 10000);
-        bettor.placeWagers();
-        float[] wagerProgression = bettor.getWagerProgression();
+        SimpleBettor simpleBettor = new SimpleBettor(100, 100, 10000);
+        simpleBettor.placeWagers();
+        float[] wagerProgression = simpleBettor.getWagerProgression();
         assertThat(wagerProgression, is(notNullValue()));
     }
 
