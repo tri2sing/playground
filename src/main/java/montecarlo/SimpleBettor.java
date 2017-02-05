@@ -1,14 +1,9 @@
 package montecarlo;
 
-public class SimpleBettor {
-    private int wagerAttempts;
-    private float wagerAmount;
-    private float startingCapital;
+public class SimpleBettor extends Bettor{
 
     public SimpleBettor(int wagerAttempts, float wagerAmount, float startingCapital) {
-        this.wagerAttempts = wagerAttempts;
-        this.wagerAmount = wagerAmount;
-        this.startingCapital = startingCapital;
+        super(wagerAttempts, wagerAmount, startingCapital);
     }
 
     public float [] placeWagers() {
