@@ -4,17 +4,15 @@ public class SimpleBettor {
     private int wagerAttempts;
     private float wagerAmount;
     private float startingCapital;
-    private float [] wagerProgression;
 
     public SimpleBettor(int wagerAttempts, float wagerAmount, float startingCapital) {
         this.wagerAttempts = wagerAttempts;
         this.wagerAmount = wagerAmount;
         this.startingCapital = startingCapital;
-        this.wagerProgression = null;
     }
 
-    public float placeWagers() {
-        wagerProgression = new float[wagerAttempts];
+    public float [] placeWagers() {
+        float [] wagerProgression = new float[wagerAttempts];
         float remainingFunds = startingCapital;
         for (int i = 0; i < wagerAttempts; i++) {
             if (Dice.rollDiceIsAWin()) {
@@ -24,10 +22,6 @@ public class SimpleBettor {
             }
             wagerProgression[i] = remainingFunds;
         }
-        return remainingFunds;
-    }
-
-    public float [] getWagerProgression() {
         return wagerProgression;
     }
 
@@ -39,8 +33,8 @@ public class SimpleBettor {
             simpleBettors[i] = new SimpleBettor(10000, 100, 10000);
         }
         for (SimpleBettor simpleBettor : simpleBettors) {
-            float resultingFunds = simpleBettor.placeWagers();
-            System.out.println(String.format("Initial = %8.2f, final = %8.2f", 10000.00, resultingFunds));
+            float [] wagerResuls = simpleBettor.placeWagers();
+            System.out.println(String.format("Initial = %8.2f, final = %8.2f", 10000.00, wagerResuls[9999]));
         }
     }
 }

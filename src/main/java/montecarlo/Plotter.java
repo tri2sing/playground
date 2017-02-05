@@ -34,7 +34,7 @@ public class Plotter extends Application {
 
             SimpleBettor simpleBettor = new SimpleBettor(10000, 100, 10000);
             simpleBettor.placeWagers();
-            float [] progression = simpleBettor.getWagerProgression();
+            float [] progression = simpleBettor.placeWagers();
             series.getData().addAll(
                     IntStream.range(0, progression.length)
                     .mapToObj(k -> new XYChart.Data<>(k, progression[k]))
