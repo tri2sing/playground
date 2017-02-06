@@ -7,20 +7,20 @@ public class DoublerBettor extends Bettor {
         WIN
     }
 
-    public DoublerBettor(int wagerAttempts, float wagerAmount, float startingCapital) {
+    public DoublerBettor(Integer wagerAttempts, Float wagerAmount, Float startingCapital) {
         super(wagerAttempts, wagerAmount, startingCapital);
     }
 
     @Override
-    public float[] placeWagers() {
-        float[] wagerProgression = new float[wagerAttempts];
-        float remainingFunds = startingCapital;
-        float previousWagerAmount = wagerAmount;
+    public Float[] placeWagers() {
+        Float[] wagerProgression = new Float[wagerAttempts];
+        Float remainingFunds = startingCapital;
+        Float previousWagerAmount = wagerAmount;
         WagerResult previousWagerResult = WagerResult.WIN;
 
-        for (int i = 0; i < wagerAttempts; i++) {
+        for (Integer i = 0; i < wagerAttempts; i++) {
             if (remainingFunds < wagerAmount) {
-                for (int k = i; k < wagerAttempts; k++) {
+                for (Integer k = i; k < wagerAttempts; k++) {
                     wagerProgression[k] = remainingFunds;
                 }
                 break;
@@ -47,14 +47,14 @@ public class DoublerBettor extends Bettor {
     }
 
     public static void main(String[] args) {
-        int numBettors = 100;
-        int numAttempts = 2500;
-        float wagerAmount = 100;
-        float startingCapital = 10000;
+        Integer numBettors = 100;
+        Integer numAttempts = 2500;
+        Float wagerAmount = 100f;
+        Float startingCapital = 10000f;
 
-        for (int i = 0; i < numBettors; i++) {
+        for (Integer i = 0; i < numBettors; i++) {
             DoublerBettor doublerBettor = new DoublerBettor(numAttempts, wagerAmount, startingCapital);
-            float[] wagerProgression = doublerBettor.placeWagers();
+            Float[] wagerProgression = doublerBettor.placeWagers();
             System.out.println(String.format("Initial = %8.2f, final = %8.2f", 10000.00, wagerProgression[numAttempts - 1]));
         }
     }

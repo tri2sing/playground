@@ -2,17 +2,17 @@ package montecarlo;
 
 public class SimpleBettor extends Bettor {
 
-    public SimpleBettor(int wagerAttempts, float wagerAmount, float startingCapital) {
+    public SimpleBettor(Integer wagerAttempts, Float wagerAmount, Float startingCapital) {
         super(wagerAttempts, wagerAmount, startingCapital);
     }
 
     @Override
-    public float[] placeWagers() {
-        float[] wagerProgression = new float[wagerAttempts];
-        float remainingFunds = startingCapital;
-        for (int i = 0; i < wagerAttempts; i++) {
+    public Float[] placeWagers() {
+        Float[] wagerProgression = new Float[wagerAttempts];
+        Float remainingFunds = startingCapital;
+        for (Integer i = 0; i < wagerAttempts; i++) {
             if (remainingFunds < wagerAmount) {
-                for (int k = i; k < wagerAttempts; k++) {
+                for (Integer k = i; k < wagerAttempts; k++) {
                     wagerProgression[k] = remainingFunds;
                 }
                 break;
@@ -28,14 +28,14 @@ public class SimpleBettor extends Bettor {
     }
 
     public static void main(String[] args) {
-        int numBettors = 100;
-        int numAttempts = 2500;
-        float wagerAmount = 100;
-        float startingCapital = 10000;
+        Integer numBettors = 100;
+        Integer numAttempts = 2500;
+        Float wagerAmount = 100f;
+        Float startingCapital = 10000f;
 
-        for (int i = 0; i < numBettors; i++) {
+        for (Integer i = 0; i < numBettors; i++) {
             SimpleBettor simpleBettor = new SimpleBettor(numAttempts, wagerAmount, startingCapital);
-            float[] wagerProgression = simpleBettor.placeWagers();
+            Float[] wagerProgression = simpleBettor.placeWagers();
             System.out.println(String.format("Initial = %8.2f, final = %8.2f", 10000.00, wagerProgression[numAttempts - 1]));
         }
     }

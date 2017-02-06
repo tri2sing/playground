@@ -1,15 +1,15 @@
 package montecarlo;
 
 public abstract class Bettor {
-    protected int wagerAttempts;
-    protected float wagerAmount;
-    protected float startingCapital;
+    protected Integer wagerAttempts;
+    protected Float wagerAmount;
+    protected Float startingCapital;
 
-    public Bettor(int wagerAttempts, float wagerAmount, float startingCapital) {
+    public Bettor(Integer wagerAttempts, Float wagerAmount, Float startingCapital) {
         this.wagerAttempts = wagerAttempts;
         this.wagerAmount = wagerAmount;
         this.startingCapital = startingCapital;
     }
 
-    public abstract float [] placeWagers();
+    public abstract Float [] placeWagers();
 }

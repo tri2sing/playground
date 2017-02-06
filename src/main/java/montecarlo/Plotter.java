@@ -1,5 +1,7 @@
 package montecarlo;
 
+import java.lang.reflect.Constructor;
+import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -32,9 +34,10 @@ public class Plotter extends Application {
             series.setName(String.valueOf(i));
             lineChart.getData().add(series);
 
-            SimpleBettor simpleBettor = new SimpleBettor(10000, 100, 10000);
-            simpleBettor.placeWagers();
-            float [] progression = simpleBettor.placeWagers();
+            //Bettor bettor = new SimpleBettor(10000, 100, 10000);
+            Bettor bettor = getBettor();
+            bettor.placeWagers();
+            Float [] progression = bettor.placeWagers();
             series.getData().addAll(
                     IntStream.range(0, progression.length)
                     .mapToObj(k -> new XYChart.Data<>(k, progression[k]))
@@ -46,6 +49,30 @@ public class Plotter extends Application {
         stage.show();
     }
 
+    private Bettor getBettor() {
+        Bettor bettor = null;
+        Map<String, String> opts = getParameters().getNamed();
+        String className = opts.get("classname");
+        Integer wagerAttempts = Integer.parseInt(opts.get("wagerattempts"));
+        Float wagerAmount = Float.parseFloat(opts.get("wageramount"));
+        Float startingCapital = Float.parseFloat(opts.get("startingcapital"));
+
+        try {
+            Class [] argTypes = new Class[] {Integer.class, Float.class, Float.class};
+            Object [] argValues = new Object[] {wagerAttempts, wagerAmount, startingCapital};
+            Class<?> classRef = Class.forName(className);
+            Constructor<?> constructor = classRef.getDeclaredConstructor(argTypes);
+            bettor = (Bettor) constructor.newInstance(argValues);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return bettor;
+    }
+
+    // Possible maven run configuration for the plotter are:
+    // mvn exec:java -Dexec.mainClass="montecarlo.Plotter" -Dexec.args="--classname=montecarlo.SimpleBettor --wagerattempts=100 --wageramount=100 --startingcapital=1000"
+    // mvn exec:java -Dexec.mainClass="montecarlo.Plotter" -Dexec.args="--classname=montecarlo.DoublerBettor --wagerattempts=100 --wageramount=100 --startingcapital=1000"
     public static void main(String[] args) {
         launch(args);
-    }}
+    }
+}
