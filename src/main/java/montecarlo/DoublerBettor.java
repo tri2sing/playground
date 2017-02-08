@@ -1,5 +1,9 @@
 package montecarlo;
 
+/**
+ * Class that represents a bettor who doubles the bet on every loss.
+ * This apprach also goes by the name of Martingale stragegy in betting.
+ */
 public class DoublerBettor extends Bettor {
 
     private enum WagerResult {
@@ -19,7 +23,9 @@ public class DoublerBettor extends Bettor {
         WagerResult previousWagerResult = WagerResult.WIN;
 
         for (Integer i = 0; i < wagerAttempts; i++) {
-            if (remainingFunds < wagerAmount) {
+            // Our remaining funds are less than what we are supposed to wager, so we will quit
+            if ((previousWagerResult == WagerResult.WIN && remainingFunds < previousWagerAmount) ||
+                    (previousWagerResult == WagerResult.LOSS && remainingFunds < 2* previousWagerAmount)) {
                 for (Integer k = i; k < wagerAttempts; k++) {
                     wagerProgression[k] = remainingFunds;
                 }
@@ -36,9 +42,9 @@ public class DoublerBettor extends Bettor {
                 previousWagerAmount *= 2;
                 if (Dice.rollDiceIsAWin()) {
                     previousWagerResult = WagerResult.WIN;
-                    remainingFunds += (previousWagerAmount * 2);
+                    remainingFunds += previousWagerAmount;
                 } else {
-                    remainingFunds -= (previousWagerAmount * 2);
+                    remainingFunds -= previousWagerAmount;
                 }
             }
             wagerProgression[i] = remainingFunds;
@@ -48,7 +54,7 @@ public class DoublerBettor extends Bettor {
 
     public static void main(String[] args) {
         Integer numBettors = 100;
-        Integer numAttempts = 2500;
+        Integer numAttempts = 5000;
         Float wagerAmount = 100f;
         Float startingCapital = 10000f;
 

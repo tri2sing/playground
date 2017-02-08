@@ -1,5 +1,8 @@
 package montecarlo;
 
+/**
+ * Class that represents a bettor who bets the same amount in every wager.
+ */
 public class SimpleBettor extends Bettor {
 
     public SimpleBettor(Integer wagerAttempts, Float wagerAmount, Float startingCapital) {
@@ -11,6 +14,7 @@ public class SimpleBettor extends Bettor {
         Float[] wagerProgression = new Float[wagerAttempts];
         Float remainingFunds = startingCapital;
         for (Integer i = 0; i < wagerAttempts; i++) {
+            // Our remaining funds are less than what we are supposed to wager, so we will quit
             if (remainingFunds < wagerAmount) {
                 for (Integer k = i; k < wagerAttempts; k++) {
                     wagerProgression[k] = remainingFunds;
@@ -29,7 +33,7 @@ public class SimpleBettor extends Bettor {
 
     public static void main(String[] args) {
         Integer numBettors = 100;
-        Integer numAttempts = 2500;
+        Integer numAttempts = 5000;
         Float wagerAmount = 100f;
         Float startingCapital = 10000f;
 
