@@ -23,15 +23,10 @@ public class DoublerBettor extends Bettor {
         WagerResult previousWagerResult = WagerResult.WIN;
 
         for (Integer i = 0; i < wagerAttempts; i++) {
-            // Our remaining funds are less than what we are supposed to wager, so we will quit
-            if ((previousWagerResult == WagerResult.WIN && remainingFunds < previousWagerAmount) ||
-                    (previousWagerResult == WagerResult.LOSS && remainingFunds < 2* previousWagerAmount)) {
-                for (Integer k = i; k < wagerAttempts; k++) {
-                    wagerProgression[k] = remainingFunds;
-                }
-                break;
-            }
             if (previousWagerResult == WagerResult.WIN) {
+                if (remainingFunds < previousWagerAmount) {
+                    previousWagerAmount = remainingFunds;
+                }
                 if (Dice.rollDiceIsAWin()) {
                     remainingFunds += previousWagerAmount;
                 } else {
@@ -39,13 +34,23 @@ public class DoublerBettor extends Bettor {
                     remainingFunds -= previousWagerAmount;
                 }
             } else if (previousWagerResult == WagerResult.LOSS) {
-                previousWagerAmount *= 2;
+                if (remainingFunds < 2 * previousWagerAmount) {
+                    previousWagerAmount = remainingFunds;
+                } else {
+                    previousWagerAmount *= 2;
+                }
                 if (Dice.rollDiceIsAWin()) {
                     previousWagerResult = WagerResult.WIN;
                     remainingFunds += previousWagerAmount;
                 } else {
                     remainingFunds -= previousWagerAmount;
                 }
+            }
+            if (remainingFunds == 0) {
+                for (Integer k = i; k < wagerAttempts; k++) {
+                    wagerProgression[k] = remainingFunds;
+                }
+                break;
             }
             wagerProgression[i] = remainingFunds;
         }

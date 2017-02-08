@@ -71,7 +71,7 @@ public class Plotter extends Application {
 
     // Possible maven run configuration for the plotter are:
     // mvn exec:java -Dexec.mainClass="montecarlo.Plotter" -Dexec.args="--classname=montecarlo.SimpleBettor --wagerattempts=5000 --wageramount=100 --startingcapital=1000"
-    // mvn exec:java -Dexec.mainClass="montecarlo.Plotter" -Dexec.args="--classname=montecarlo.DoublerBettor --wagerattempts=5000 --wageramount=100 --startingcapital=1000"
+    // mvn exec:java -Dexec.mainClass="montecarlo.Plotter" -Dexec.args="--classname=montecarlo.DoublerBettor --wagerattempts=100 --wageramount=100 --startingcapital=1000"
     public static void main(String[] args) {
         launch(args);
     }
