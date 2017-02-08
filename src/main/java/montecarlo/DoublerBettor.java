@@ -42,6 +42,7 @@ public class DoublerBettor extends Bettor {
                 if (Dice.rollDiceIsAWin()) {
                     previousWagerResult = WagerResult.WIN;
                     remainingFunds += previousWagerAmount;
+                    previousWagerAmount = wagerAmount;
                 } else {
                     remainingFunds -= previousWagerAmount;
                 }
