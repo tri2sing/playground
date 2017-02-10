@@ -56,10 +56,11 @@ public class Plotter extends Application {
         Integer wagerAttempts = Integer.parseInt(opts.get("wagerattempts"));
         Float wagerAmount = Float.parseFloat(opts.get("wageramount"));
         Float startingCapital = Float.parseFloat(opts.get("startingcapital"));
+        Float wagerLossMultiper = Float.parseFloat(opts.get("wagerlossmultiplier"));
 
         try {
-            Class [] argTypes = new Class[] {Integer.class, Float.class, Float.class};
-            Object [] argValues = new Object[] {wagerAttempts, wagerAmount, startingCapital};
+            Class [] argTypes = new Class[] {Integer.class, Float.class, Float.class, Float.class};
+            Object [] argValues = new Object[] {wagerAttempts, wagerAmount, startingCapital, wagerLossMultiper};
             Class<?> classRef = Class.forName(className);
             Constructor<?> constructor = classRef.getDeclaredConstructor(argTypes);
             bettor = (Bettor) constructor.newInstance(argValues);
@@ -70,8 +71,8 @@ public class Plotter extends Application {
     }
 
     // Possible maven run configuration for the plotter are:
-    // mvn exec:java -Dexec.mainClass="montecarlo.Plotter" -Dexec.args="--classname=montecarlo.SimpleBettor --wagerattempts=1000 --wageramount=100 --startingcapital=10000"
-    // mvn exec:java -Dexec.mainClass="montecarlo.Plotter" -Dexec.args="--classname=montecarlo.DoublerBettor --wagerattempts=1000 --wageramount=100 --startingcapital=10000"
+    // mvn exec:java -Dexec.mainClass="montecarlo.Plotter" -Dexec.args="--classname=montecarlo.SimpleBettor --wagerattempts=1000 --wageramount=100 --startingcapital=10000 --wagerlossmultiplier=1"
+    // mvn exec:java -Dexec.mainClass="montecarlo.Plotter" -Dexec.args="--classname=montecarlo.MultiplierBettor --wagerattempts=1000 --wageramount=100 --startingcapital=10000 --wagerlossmultiplier=2"
     public static void main(String[] args) {
         launch(args);
     }

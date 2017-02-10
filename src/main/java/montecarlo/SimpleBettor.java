@@ -5,8 +5,8 @@ package montecarlo;
  */
 public class SimpleBettor extends Bettor {
 
-    public SimpleBettor(Integer wagerAttempts, Float wagerAmount, Float startingCapital) {
-        super(wagerAttempts, wagerAmount, startingCapital);
+    public SimpleBettor(Integer wagerAttempts, Float wagerAmount, Float startingCapital, Float wagerLossMultiplier) {
+        super(wagerAttempts, wagerAmount, startingCapital, wagerLossMultiplier);
     }
 
     @Override
@@ -22,9 +22,9 @@ public class SimpleBettor extends Bettor {
                 break;
             }
             if (Dice.rollDiceIsAWin()) {
-                remainingFunds += wagerAmount;
+                remainingFunds += (wagerLossMultiplier * wagerAmount);
             } else {
-                remainingFunds -= wagerAmount;
+                remainingFunds -= (wagerLossMultiplier * wagerAmount);
             }
             wagerProgression[i] = remainingFunds;
         }
@@ -36,9 +36,10 @@ public class SimpleBettor extends Bettor {
         Integer numAttempts = 5000;
         Float wagerAmount = 100f;
         Float startingCapital = 10000f;
+        Float wagerLossMultiplier = 1f;
 
         for (Integer i = 0; i < numBettors; i++) {
-            SimpleBettor simpleBettor = new SimpleBettor(numAttempts, wagerAmount, startingCapital);
+            SimpleBettor simpleBettor = new SimpleBettor(numAttempts, wagerAmount, startingCapital, wagerLossMultiplier);
             Float[] wagerProgression = simpleBettor.placeWagers();
             System.out.println(String.format("Initial = %8.2f, final = %8.2f", 10000.00, wagerProgression[numAttempts - 1]));
         }

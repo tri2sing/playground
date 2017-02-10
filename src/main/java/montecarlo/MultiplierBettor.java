@@ -4,15 +4,15 @@ package montecarlo;
  * Class that represents a bettor who doubles the bet on every loss.
  * This apprach also goes by the name of Martingale stragegy in betting.
  */
-public class DoublerBettor extends Bettor {
+public class MultiplierBettor extends Bettor {
 
     private enum WagerResult {
         LOSS,
         WIN
     }
 
-    public DoublerBettor(Integer wagerAttempts, Float wagerAmount, Float startingCapital) {
-        super(wagerAttempts, wagerAmount, startingCapital);
+    public MultiplierBettor(Integer wagerAttempts, Float wagerAmount, Float startingCapital, Float wagerLossMultiplier) {
+        super(wagerAttempts, wagerAmount, startingCapital, wagerLossMultiplier);
     }
 
     @Override
@@ -34,10 +34,10 @@ public class DoublerBettor extends Bettor {
                     remainingFunds -= previousWagerAmount;
                 }
             } else if (previousWagerResult == WagerResult.LOSS) {
-                if (remainingFunds < 2 * previousWagerAmount) {
+                if (remainingFunds < (wagerLossMultiplier * previousWagerAmount)) {
                     previousWagerAmount = remainingFunds;
                 } else {
-                    previousWagerAmount *= 2;
+                    previousWagerAmount *= wagerLossMultiplier;
                 }
                 if (Dice.rollDiceIsAWin()) {
                     previousWagerResult = WagerResult.WIN;
@@ -63,10 +63,11 @@ public class DoublerBettor extends Bettor {
         Integer numAttempts = 5000;
         Float wagerAmount = 100f;
         Float startingCapital = 10000f;
+        Float wagerLossMultiplier = 2f;
 
         for (Integer i = 0; i < numBettors; i++) {
-            DoublerBettor doublerBettor = new DoublerBettor(numAttempts, wagerAmount, startingCapital);
-            Float[] wagerProgression = doublerBettor.placeWagers();
+            MultiplierBettor multiplierBettor = new MultiplierBettor(numAttempts, wagerAmount, startingCapital, wagerLossMultiplier);
+            Float[] wagerProgression = multiplierBettor.placeWagers();
             System.out.println(String.format("Initial = %8.2f, final = %8.2f", 10000.00, wagerProgression[numAttempts - 1]));
         }
     }
