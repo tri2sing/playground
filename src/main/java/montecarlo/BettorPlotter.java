@@ -12,7 +12,7 @@ import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import javafx.stage.Stage;
 
-public class Plotter extends Application {
+public class BettorPlotter extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
@@ -71,8 +71,8 @@ public class Plotter extends Application {
     }
 
     // Possible maven run configuration for the plotter are:
-    // mvn exec:java -Dexec.mainClass="montecarlo.Plotter" -Dexec.args="--classname=montecarlo.SimpleBettor --wagerattempts=1000 --wageramount=100 --startingcapital=10000 --wagerlossmultiplier=1"
-    // mvn exec:java -Dexec.mainClass="montecarlo.Plotter" -Dexec.args="--classname=montecarlo.MultiplierBettor --wagerattempts=1000 --wageramount=100 --startingcapital=10000 --wagerlossmultiplier=2"
+    // mvn exec:java -Dexec.mainClass="montecarlo.BettorPlotter" -Dexec.args="--classname=montecarlo.SimpleBettor --wagerattempts=1000 --wageramount=100 --startingcapital=10000 --wagerlossmultiplier=1"
+    // mvn exec:java -Dexec.mainClass="montecarlo.BettorPlotter" -Dexec.args="--classname=montecarlo.MultiplierBettor --wagerattempts=1000 --wageramount=100 --startingcapital=10000 --wagerlossmultiplier=2"
     public static void main(String[] args) {
         launch(args);
     }
