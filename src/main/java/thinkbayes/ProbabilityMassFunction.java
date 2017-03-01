@@ -9,20 +9,16 @@ import java.util.HashMap;
  * @author Sameer Adhikari
  * @version 1.0
  * @since 2017-02-20
- *
  */
 
 public class ProbabilityMassFunction {
-    private HashMap<String, Float> pmf; // probability mass function
-    private float cf; // Cumulative frequency
+    protected HashMap<String, Float> pmf; // probability mass function
 
     public ProbabilityMassFunction() {
         this.pmf = new HashMap<>();
-        this.cf = 0f;
     }
 
     public void set(String event, float frequency) {
-        this.cf += frequency;
         pmf.put(event, frequency);
     }
 
@@ -35,16 +31,17 @@ public class ProbabilityMassFunction {
     }
 
     public void normalize() {
-        if (cf == 0) {
-            throw new IllegalStateException("Cannot normalize when cumulative frequency is 0");
-        }
-        pmf.replaceAll((k, v) -> v/ cf);
-        cf = 1f;
+        float valuesSum = pmf.values().stream().reduce(0F, Float::sum);
+        pmf.replaceAll((k, v) -> v / valuesSum);
     }
 
     public void mult(String event, float multiplier) {
         pmf.put(event, pmf.getOrDefault(event, 0F) * multiplier);
     }
 
+    @Override
+    public String toString() {
+        return pmf.toString();
+    }
 }
 
