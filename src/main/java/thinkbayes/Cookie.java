@@ -34,7 +34,7 @@ public class Cookie extends ProbabilityMassFunction {
     }
 
     public void update(String cookieType) {
-        pmf.forEach((k, v) -> { super.mult(k, getLikelihood(k, cookieType)); } );
+        pmf.forEach((k, v) -> { mult(k, getLikelihood(k, cookieType)); } );
         normalize();
     }
 }
