@@ -14,14 +14,15 @@ public class Cookie extends ProbabilityMassFunction {
 
     // Gives each hypothesis the same prior probability
     public Cookie(List<String> bowls) {
+        super();
         // forEach is terminal (void or non-stream result)
-        bowls.stream().forEach(x -> super.set(x, 1F));
+        bowls.stream().forEach(x -> set(x, 1F));
         super.normalize();
         mixes = new HashMap<>();
     }
 
     public void setDataUnderHypothesis(String bowl, HashMap<String, Float> mix) {
-        if (super.contains(bowl)) {
+        if (pmf.containsKey(bowl)) {
             mixes.put(bowl, mix);
         } else {
             throw new IllegalArgumentException("Trying to set mix for a new bowl: " + bowl);
@@ -33,7 +34,7 @@ public class Cookie extends ProbabilityMassFunction {
     }
 
     public void update(String cookieType) {
-        super.pmf.forEach((k, v) -> { super.mult(k, getLikelihood(k, cookieType)); } );
-        super.normalize();
+        pmf.forEach((k, v) -> { super.mult(k, getLikelihood(k, cookieType)); } );
+        normalize();
     }
 }

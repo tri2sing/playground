@@ -22,10 +22,6 @@ public class ProbabilityMassFunction {
         pmf.put(event, frequency);
     }
 
-    public boolean contains(String event) {
-        return pmf.containsKey(event);
-    }
-
     public float get(String event) {
         return pmf.get(event);
     }
