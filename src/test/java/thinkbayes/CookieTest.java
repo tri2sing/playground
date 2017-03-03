@@ -32,9 +32,9 @@ public class CookieTest {
         mix2.put("chocolate", 0.5F);
         cookiePmf.setDataUnderHypothesis("bowl 2", mix2);
 
-        assertThat(cookiePmf.getLikelihood("bowl 1", "vanilla"))
+        assertThat(cookiePmf.getLikelihood("vanilla", "bowl 1"))
                 .isEqualTo(0.75F);
-        assertThat(cookiePmf.getLikelihood("bowl 2", "vanilla"))
+        assertThat(cookiePmf.getLikelihood("vanilla", "bowl 2"))
                 .isEqualTo(0.5F);
 
     }

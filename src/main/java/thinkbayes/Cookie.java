@@ -29,12 +29,12 @@ public class Cookie extends ProbabilityMassFunction {
         }
     }
 
-    public float getLikelihood(String bowl, String cookieType) {
+    public float getLikelihood(String cookieType, String bowl) {
         return mixes.get(bowl).get(cookieType);
     }
 
     public void update(String cookieType) {
-        getEventStream().forEach(k -> { mult(k, getLikelihood(k, cookieType)); } );
+        getEventStream().forEach(k -> { mult(k, getLikelihood(cookieType, k)); } );
         normalize();
     }
 }

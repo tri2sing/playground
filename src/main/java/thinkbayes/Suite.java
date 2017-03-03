@@ -11,4 +11,19 @@ public abstract class Suite extends ProbabilityMassFunction{
         hypotheses.stream().forEach(hypothesis -> setEvent(hypothesis, 1F));
         normalize();
     }
+
+    /**
+     * Update hypotheses given data
+     * @param data
+     */
+    public void updateHypotheses(String data) {
+        getEventStream().forEach(hypothesis -> {mult(hypothesis, getLikelihood(data, hypothesis));});
+    }
+
+    /**
+     * Get likelihood of data under hypothesis
+     */
+    public abstract float getLikelihood(String data, String hypothesis);
+
+
 }
