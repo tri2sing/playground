@@ -14,7 +14,7 @@ public class CookieTest {
     public void setUpPriors() throws Exception {
         List<String> bowls = Arrays.asList(new String[] {"bowl 1", "bowl 2", "Bowl 3"});
         Cookie cookiePmf = new Cookie(bowls);
-        assertThat(cookiePmf.get("bowl 1")).isEqualTo(1F/3F);
+        assertThat(cookiePmf.getEvent("bowl 1")).isEqualTo(1F/3F);
     }
 
     @Test
@@ -55,8 +55,8 @@ public class CookieTest {
         cookiePmf.setDataUnderHypothesis("bowl 2", mix2);
 
         cookiePmf.update("vanilla");
-        assertThat(cookiePmf.get("bowl 1")).isEqualTo(0.6F);
-        assertThat(cookiePmf.get("bowl 2")).isEqualTo(0.4F);
+        assertThat(cookiePmf.getEvent("bowl 1")).isEqualTo(0.6F);
+        assertThat(cookiePmf.getEvent("bowl 2")).isEqualTo(0.4F);
 
     }
 

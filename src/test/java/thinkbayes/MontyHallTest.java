@@ -13,13 +13,13 @@ public class MontyHallTest {
     public void testMontyHall() throws Exception {
         List<String> doors = Arrays.asList(new String [] {"1", "2", "3"});
         MontyHall mh = new MontyHall(doors);
-        assertThat(mh.get("1")).isEqualTo(1F/3F);
-        assertThat(mh.get("3")).isEqualTo(1F/3F);
+        assertThat(mh.getEvent("1")).isEqualTo(1F/3F);
+        assertThat(mh.getEvent("3")).isEqualTo(1F/3F);
         mh.userChoosesDoor("1");
         mh.montyOpensDoor("2");
         mh.update("2");
-        assertThat(mh.get("1")).isEqualTo(1F/3F);
-        assertThat(mh.get("2")).isEqualTo(0F);
-        assertThat(mh.get("3")).isEqualTo(2F/3F);
+        assertThat(mh.getEvent("1")).isEqualTo(1F/3F);
+        assertThat(mh.getEvent("2")).isEqualTo(0F);
+        assertThat(mh.getEvent("3")).isEqualTo(2F/3F);
     }
 }

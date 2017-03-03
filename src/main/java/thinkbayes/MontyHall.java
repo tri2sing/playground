@@ -12,7 +12,7 @@ public class MontyHall extends ProbabilityMassFunction {
 
     public MontyHall(List<String> doors) {
         super();
-        doors.stream().forEach(door -> set(door, 1F));
+        doors.stream().forEach(door -> setEvent(door, 1F));
         normalize();
     }
 
@@ -38,7 +38,7 @@ public class MontyHall extends ProbabilityMassFunction {
     }
 
     public void update(String doorMontyOpens) {
-        pmf.forEach((k, v) -> {mult(k, likelihood(doorMontyOpens, k));});
+        getEventStream().forEach(k -> {mult(k, likelihood(doorMontyOpens, k));});
         normalize();
     }
 }

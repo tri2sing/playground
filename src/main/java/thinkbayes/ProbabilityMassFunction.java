@@ -1,6 +1,7 @@
 package thinkbayes;
 
 import java.util.HashMap;
+import java.util.stream.Stream;
 
 /**
  * <h1>Probablility Mass Function</h1>
@@ -12,18 +13,26 @@ import java.util.HashMap;
  */
 
 public class ProbabilityMassFunction {
-    protected HashMap<String, Float> pmf; // probability mass function
+    private HashMap<String, Float> pmf; // probability mass function
 
     public ProbabilityMassFunction() {
         this.pmf = new HashMap<>();
     }
 
-    public void set(String event, float frequency) {
+    public boolean hasEvent(String event) {
+        return pmf.containsKey(event);
+    }
+
+    public void setEvent(String event, float frequency) {
         pmf.put(event, frequency);
     }
 
-    public float get(String event) {
+    public float getEvent(String event) {
         return pmf.get(event);
+    }
+
+    public Stream<String> getEventStream() {
+        return pmf.keySet().stream();
     }
 
     public void normalize() {

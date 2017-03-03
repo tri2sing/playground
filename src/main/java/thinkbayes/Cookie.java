@@ -16,16 +16,16 @@ public class Cookie extends ProbabilityMassFunction {
     public Cookie(List<String> bowls) {
         super();
         // forEach is terminal (void or non-stream result)
-        bowls.stream().forEach(x -> set(x, 1F));
+        bowls.stream().forEach(x -> setEvent(x, 1F));
         super.normalize();
         mixes = new HashMap<>();
     }
 
     public void setDataUnderHypothesis(String bowl, HashMap<String, Float> mix) {
-        if (pmf.containsKey(bowl)) {
+        if (hasEvent(bowl)) {
             mixes.put(bowl, mix);
         } else {
-            throw new IllegalArgumentException("Trying to set mix for a new bowl: " + bowl);
+            throw new IllegalArgumentException("Trying to setEvent mix for a new bowl: " + bowl);
         }
     }
 
@@ -34,7 +34,7 @@ public class Cookie extends ProbabilityMassFunction {
     }
 
     public void update(String cookieType) {
-        pmf.forEach((k, v) -> { mult(k, getLikelihood(k, cookieType)); } );
+        getEventStream().forEach(k -> { mult(k, getLikelihood(k, cookieType)); } );
         normalize();
     }
 }
