@@ -23,6 +23,7 @@ public class MontyHall extends ProbabilityMassFunction {
     public void montyOpensDoor(String door) {
         doorMontyOpens = door;
     }
+
     /**
      * @param doorMontyOpens the door to be opened by Monty
      * @param hypothesisThatCarIsBehind the door that has the car
