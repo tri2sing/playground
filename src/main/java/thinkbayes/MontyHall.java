@@ -6,7 +6,7 @@ import java.util.List;
  * Implementation of Monty Hall problem for a specific scenario.
  * Guest chooses door 1, and Monty opens door 2 to reveal a goat.
  */
-public class MontyHall extends ProbabilityMassFunction {
+public class MontyHall extends ProbabilityMassFunction<String> {
     private String doorUserChooses;
     private String doorMontyOpens;
 

@@ -8,7 +8,7 @@ import java.util.List;
  *
  */
 
-public class Cookie extends ProbabilityMassFunction {
+public class Cookie extends ProbabilityMassFunction<String> {
 
     private HashMap<String, HashMap<String, Float>> mixes;
 
