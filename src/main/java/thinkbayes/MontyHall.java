@@ -39,7 +39,7 @@ public class MontyHall extends ProbabilityMassFunction<String> {
     }
 
     public void update(String doorMontyOpens) {
-        getEventStream().forEach(k -> {mult(k, likelihood(doorMontyOpens, k));});
+        getEventStream().forEach(k -> {mult(k, likelihood(doorMontyOpens, (String) k));});
         normalize();
     }
 }
