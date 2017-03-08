@@ -12,26 +12,26 @@ import java.util.stream.Stream;
  * @since 2017-02-20
  */
 
-public class ProbabilityMassFunction {
-    private HashMap<String, Float> pmf; // probability mass function
+public class ProbabilityMassFunction<T> {
+    private HashMap<T, Float> pmf; // probability mass function
 
     public ProbabilityMassFunction() {
         this.pmf = new HashMap<>();
     }
 
-    public boolean hasEvent(String event) {
+    public boolean hasEvent(T event) {
         return pmf.containsKey(event);
     }
 
-    public void setEvent(String event, float frequency) {
+    public void setEvent(T event, float frequency) {
         pmf.put(event, frequency);
     }
 
-    public float getEvent(String event) {
+    public float getEvent(T event) {
         return pmf.get(event);
     }
 
-    public Stream<String> getEventStream() {
+    public Stream<T> getEventStream() {
         return pmf.keySet().stream();
     }
 
@@ -40,7 +40,7 @@ public class ProbabilityMassFunction {
         pmf.replaceAll((k, v) -> v / valuesSum);
     }
 
-    public void mult(String event, float multiplier) {
+    public void mult(T event, float multiplier) {
         pmf.put(event, pmf.getOrDefault(event, 0F) * multiplier);
     }
 

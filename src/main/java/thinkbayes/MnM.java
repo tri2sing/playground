@@ -3,7 +3,7 @@ package thinkbayes;
 import java.util.HashMap;
 import java.util.List;
 
-public class MnM extends Suite {
+public class MnM extends Suite<String> {
     private static final HashMap<String, Float> MIX1994 = new HashMap<>();
     static {
         MIX1994.put("brown", 30F);
