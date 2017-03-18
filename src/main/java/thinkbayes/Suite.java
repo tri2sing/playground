@@ -5,8 +5,8 @@ import java.util.List;
 /**
  * Class that represents a suite of hypothesis and their probabilities.
  */
-public abstract class Suite<T> extends ProbabilityMassFunction{
-    public Suite (List<T> hypotheses) {
+public abstract class Suite<H, D> extends ProbabilityMassFunction{
+    public Suite (List<H> hypotheses) {
         super();
         hypotheses.stream().forEach(hypothesis -> setEvent(hypothesis, 1F));
         normalize();
@@ -16,15 +16,15 @@ public abstract class Suite<T> extends ProbabilityMassFunction{
      * Update hypotheses given data
      * @param data
      */
-    public void updateHypotheses(T data) {
-        getEventStream().forEach(hypothesis -> {mult(hypothesis, getLikelihood(data, (T) hypothesis));});
+    public void updateHypotheses(D data) {
+        getEventStream().forEach(hypothesis -> {mult(hypothesis, getLikelihood(data, (H) hypothesis));});
         normalize();
     }
 
     /**
      * Get likelihood of data under hypothesis
      */
-    public abstract float getLikelihood(T data, T hypothesis);
+    public abstract float getLikelihood(D data, H hypothesis);
 
 
 }

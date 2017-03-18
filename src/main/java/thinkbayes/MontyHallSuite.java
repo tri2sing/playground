@@ -2,7 +2,7 @@ package thinkbayes;
 
 import java.util.List;
 
-public class MontyHallSuite extends Suite<String> {
+public class MontyHallSuite extends Suite<String, String> {
     private String doorUserChooses;
     private String doorMontyOpens;
 
