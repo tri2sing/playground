@@ -27,7 +27,7 @@ public class LocomotivePlotter extends Application {
         List<Integer> hypothesis = IntStream.rangeClosed(1, 1000).boxed().collect(Collectors.toList());
         Locomotive locomotive = new Locomotive(hypothesis);
         // We saw a locomotive with the identifier 60
-        locomotive.updateHypotheses(60);
+        locomotive.updateHypotheses(60F);
 
         XYChart.Series series = new XYChart.Series();
         series.setName("Saw a locomotive with " + String.valueOf(60));
@@ -41,4 +41,6 @@ public class LocomotivePlotter extends Application {
         stage.setScene(scene);
         stage.show();
     }
+
+    public static void main(String[] args) { launch(args);}
 }

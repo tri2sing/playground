@@ -2,14 +2,14 @@ package thinkbayes;
 
 import java.util.List;
 
-public class Locomotive extends Suite<Integer, Integer>{
+public class Locomotive<H extends Integer, D extends Float> extends SuiteNumeric{
 
-    public Locomotive(List<Integer> hypotheses) {
-        super(hypotheses, x -> {return 1F/x;});
+    public Locomotive(List<H> hypotheses) {
+        super(hypotheses, x -> 1F/ ((Integer) x).floatValue());
     }
 
     @Override
-    public float getLikelihood(Integer data, Integer hypothesis) {
+    public float getLikelihood(Float data, Integer hypothesis) {
         if (hypothesis < data) {
             return 0;
         } else {
