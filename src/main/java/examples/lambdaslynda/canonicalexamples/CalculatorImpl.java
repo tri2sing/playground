@@ -8,8 +8,8 @@ public class CalculatorImpl {
         Calculator<Double> mul = (a, b) -> a * b;
 
         System.out.println(add.calculate(3, 4));
-        System.out.println(sub.calculate(10f, 17f));
-        System.out.println(div.calculate(50l, 10l));
+        System.out.println(sub.calculate(10F, 17F));
+        System.out.println(div.calculate(50L, 10L));
         System.out.println(mul.calculate(4d, 5d));
     }
 }

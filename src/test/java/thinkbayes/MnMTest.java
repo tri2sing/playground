@@ -10,7 +10,7 @@ import org.junit.Test;
 public class MnMTest {
     @Test
     public void testMnM() throws Exception {
-        List<String> hypotheses = Arrays.asList(new String [] {"A", "B"});
+        List<String> hypotheses = Arrays.asList("A", "B");
         MnM mnm = new MnM(hypotheses);
         assertThat(mnm.getEvent("A")).isEqualTo(0.5F);
         assertThat(mnm.getEvent("B")).isEqualTo(0.5F);

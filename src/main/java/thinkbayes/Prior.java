@@ -8,7 +8,7 @@ public enum Prior implements Function<Float, Float>{
 
     private final Function<Float, Float> function;
 
-    private Prior(Function<Float, Float> function) {
+    Prior(Function<Float, Float> function) {
         this.function = function;
     }
 

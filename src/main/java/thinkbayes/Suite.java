@@ -20,10 +20,6 @@ public abstract class Suite<H, D> extends ProbabilityMassFunction{
         normalize();
     }
 
-    /**
-     * Update hypotheses given data
-     * @param data
-     */
     public void updateHypotheses(D data) {
         getEventStream().forEach(hypothesis -> {mult(hypothesis, getLikelihood(data, (H) hypothesis));});
         normalize();

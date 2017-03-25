@@ -11,7 +11,7 @@ public class MontyHallTest {
 
     @Test
     public void testMontyHall() throws Exception {
-        List<String> doors = Arrays.asList(new String [] {"1", "2", "3"});
+        List<String> doors = Arrays.asList("1", "2", "3");
         MontyHall mh = new MontyHall(doors);
         assertThat(mh.getEvent("1")).isEqualTo(1F/3F);
         assertThat(mh.getEvent("3")).isEqualTo(1F/3F);

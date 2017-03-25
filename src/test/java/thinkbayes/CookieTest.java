@@ -12,14 +12,14 @@ public class CookieTest {
 
     @Test
     public void setUpPriors() throws Exception {
-        List<String> bowls = Arrays.asList(new String[] {"bowl 1", "bowl 2", "Bowl 3"});
+        List<String> bowls = Arrays.asList("bowl 1", "bowl 2", "Bowl 3");
         Cookie cookiePmf = new Cookie(bowls);
         assertThat(cookiePmf.getEvent("bowl 1")).isEqualTo(1F/3F);
     }
 
     @Test
     public void setDataUnderHypothesis() throws Exception {
-        List<String> bowls = Arrays.asList(new String[] {"bowl 1", "bowl 2"});
+        List<String> bowls = Arrays.asList("bowl 1", "bowl 2");
         Cookie cookiePmf = new Cookie(bowls);
 
         HashMap<String, Float> mix1 = new HashMap<>();
@@ -41,7 +41,7 @@ public class CookieTest {
 
     @Test
     public void updatePriorsToPosteriors() throws Exception {
-        List<String> bowls = Arrays.asList(new String[] {"bowl 1", "bowl 2"});
+        List<String> bowls = Arrays.asList("bowl 1", "bowl 2");
         Cookie cookiePmf = new Cookie(bowls);
 
         HashMap<String, Float> mix1 = new HashMap<>();

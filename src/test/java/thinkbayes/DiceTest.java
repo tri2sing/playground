@@ -10,7 +10,7 @@ import org.junit.Test;
 public class DiceTest {
     @Test
     public void testOneRoll() throws Exception {
-        List<Integer> sides = Arrays.asList(new Integer[] {4, 6, 8, 12, 20});
+        List<Integer> sides = Arrays.asList(4, 6, 8, 12, 20);
         Dice dices = new Dice(sides);
         assertThat(dices.getEvent(sides.get(0))).isEqualTo(1F/5F);
         dices.updateHypotheses(6);
@@ -23,7 +23,7 @@ public class DiceTest {
 
     @Test
     public void testMultippleRolls() throws Exception {
-        List<Integer> sides = Arrays.asList(new Integer[] {4, 6, 8, 12, 20});
+        List<Integer> sides = Arrays.asList(4, 6, 8, 12, 20);
         Dice dices = new Dice(sides);
         assertThat(dices.getEvent(sides.get(0))).isEqualTo(1F/5F);
         Integer [] rolls = new Integer[] {6, 6, 8, 7, 7, 5, 4};

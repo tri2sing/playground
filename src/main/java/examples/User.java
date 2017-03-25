@@ -1,10 +1,6 @@
 package examples;
 
 /**
- * Created by samadhik on 11/1/16.
- */
-
-/**
  * Builder classes are similar to constructors. They allow you to reduce the
  * number of constructor arguments while still allowing you to assign initial
  * values to an instance.
@@ -100,8 +96,7 @@ public class User {
         }
 
         public User build() {
-            User user = new User(this);
-            return user;
+            return new User(this);
         }
     }
 

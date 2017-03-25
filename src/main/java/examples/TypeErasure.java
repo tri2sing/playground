@@ -1,8 +1,5 @@
 package examples;
 
-/**
- * Created by samadhik on 12/10/16.
- */
 import java.util.ArrayList;
 
 public class TypeErasure {

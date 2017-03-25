@@ -27,7 +27,7 @@ public class MontyHall extends ProbabilityMassFunction<String> {
     /**
      * @param doorMontyOpens the door to be opened by Monty
      * @param hypothesisThatCarIsBehind the door that has the car
-     * @return P(doorMontyOpens | hypothesisThatCarIsBehind)
+     * @return P(doorMontyOpens \| hypothesisThatCarIsBehind)
      */
     public float likelihood(String doorMontyOpens, String hypothesisThatCarIsBehind) {
         if(doorMontyOpens.equals(hypothesisThatCarIsBehind))
@@ -39,7 +39,7 @@ public class MontyHall extends ProbabilityMassFunction<String> {
     }
 
     public void update(String doorMontyOpens) {
-        getEventStream().forEach(k -> {mult(k, likelihood(doorMontyOpens, (String) k));});
+        getEventStream().forEach(k -> {mult(k, likelihood(doorMontyOpens, k));});
         normalize();
     }
 }

@@ -7,7 +7,7 @@ public class PredicateImpl {
     public class Classical implements Predicate<String>{
         @Override
         public boolean test(String input) {
-            return input.length() < 10? true: false;
+            return input.length() < 10;
         }
     }
 
