@@ -20,6 +20,13 @@ public abstract class SuiteNumeric<H extends Integer, D extends Float> extends P
         normalize();
     }
 
+    public SuiteNumeric(List<H> hypotheses, Prior prior) {
+        super();
+        hypotheses.stream().forEach(hypothesis ->
+                setEvent(hypothesis, prior.apply( hypothesis.floatValue())));
+        normalize();
+    }
+
     /**
      * Update hypotheses given data
      */

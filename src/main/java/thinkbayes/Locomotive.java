@@ -8,6 +8,10 @@ public class Locomotive<H extends Integer, D extends Float> extends SuiteNumeric
         super(hypotheses, x -> 1F/ ((Integer) x).floatValue());
     }
 
+    public Locomotive(List<H> hypotheses, Prior prior) {
+        super(hypotheses, prior);
+    }
+
     @Override
     public float getLikelihood(Float data, Integer hypothesis) {
         if (hypothesis < data) {
