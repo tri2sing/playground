@@ -1,6 +1,7 @@
 package thinkbayes;
 
-import java.util.HashMap;
+import java.util.Map;
+import java.util.TreeMap;
 import java.util.stream.Stream;
 
 /**
@@ -14,10 +15,10 @@ import java.util.stream.Stream;
  */
 
 public class ProbabilityMassFunctionNumeric<E extends Integer, F extends Float> {
-    private HashMap<E, F> pmf; // probability mass function
+    private TreeMap<E, F> pmf; // probability mass function
 
     public ProbabilityMassFunctionNumeric() {
-        this.pmf = new HashMap<>();
+        this.pmf = new TreeMap<>();
     }
 
     public boolean hasEvent(E event) {
@@ -61,6 +62,20 @@ public class ProbabilityMassFunctionNumeric<E extends Integer, F extends Float> 
                         (F) Float.valueOf(0F), (x, y) ->
                                 (F) Float.valueOf(x.floatValue() + y.floatValue())
                 );
+    }
+
+    public E percentileEvent(Float percentileValue) {
+        float percent = percentileValue.floatValue()/100F;
+        float runningTotal = 0;
+
+        // TreeMap returs the value in order of the keys
+        for (Map.Entry<E, F> entry : pmf.entrySet()) {
+            runningTotal += entry.getValue().floatValue();
+            if (runningTotal >= percent) {
+                return entry.getKey();
+            }
+        }
+        return null;
     }
 
     @Override

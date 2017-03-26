@@ -40,6 +40,15 @@ public class LocomotiveTest {
             }
             // Rounding is necessary to tackle the floating point errors
             assertThat(means[i]).isEqualTo(Math.round(locomotive.mean()));
+
+            Integer fifthPercentile = locomotive.percentileEvent(5F);
+            assertThat(fifthPercentile).isEqualTo(91);
+
+            Integer ninetyfifthPercentile = locomotive.percentileEvent(95F);
+            // floating point calculation errors, put the answer in a range.
+            // The observed cases so far are 235, 242, and 243.
+            assertThat(ninetyfifthPercentile).isBetween(235, 243);
+
         }
     }
 
