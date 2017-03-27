@@ -28,6 +28,9 @@ public class EuroTest {
             euro1.updateHypotheses(observation);
         }
         assertThat(euro1.getMaximumLikelihoodEvent()).isEqualTo(56);
+        assertThat(euro1.mean()).isEqualTo(55.962227F);
+        assertThat(euro1.percentileEvent(5F)).isEqualTo(51);
+        assertThat(euro1.percentileEvent(95F)).isEqualTo(61);
 
     }
 }
