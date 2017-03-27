@@ -58,6 +58,29 @@ public class EuroPlotter extends Application {
                         .collect(Collectors.toList())
         );
 
+        Euro euro2 = new Euro(hypotheses, Prior.TRIANGLE_101);
+        XYChart.Series series3 = new XYChart.Series();
+        lineChart.getData().add(series3);
+        series3.setName("Triangle Prior");
+        series3.getData().addAll(
+                IntStream.rangeClosed(START_EVENT, END_EVENT)
+                        .mapToObj(i -> new XYChart.Data(i, euro2.getEvent(i)))
+                        .collect(Collectors.toList())
+        );
+
+        for (Float observation : observations) {
+            euro2.updateHypotheses(observation);
+        }
+
+        XYChart.Series series4 = new XYChart.Series();
+        lineChart.getData().add(series4);
+        series4.setName("Posterior for Triangle Prior");
+        series4.getData().addAll(
+                IntStream.rangeClosed(START_EVENT, END_EVENT)
+                        .mapToObj(i -> new XYChart.Data(i, euro2.getEvent(i)))
+                        .collect(Collectors.toList())
+        );
+
         Scene scene  = new Scene(lineChart,1368, 768);
         stage.setScene(scene);
         stage.show();
