@@ -28,7 +28,6 @@ public class EuroPlotter extends Application {
         lineChart.setTitle("Probability of Hypothesis Given Data");
         lineChart.setCreateSymbols(false);
 
-        // Assume that a company can have anywhere from 1 to 1000 locomotvies
         List<Integer> hypotheses = IntStream.rangeClosed(START_EVENT, END_EVENT).boxed().collect(Collectors.toList());
         List<Flip> observations = new LinkedList<>();
         for(int i = 0; i < 140; i++)
