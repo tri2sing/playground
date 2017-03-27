@@ -29,7 +29,7 @@ public class EuroPlotter extends Application {
         lineChart.setCreateSymbols(false);
 
         List<Integer> hypotheses = IntStream.rangeClosed(START_EVENT, END_EVENT).boxed().collect(Collectors.toList());
-        List<Flip> observations = new LinkedList<>();
+        List<Float> observations = new LinkedList<>();
         for(int i = 0; i < 140; i++)
             observations.add(Flip.HEADS);
         for(int i = 140; i < 250; i++)
@@ -45,7 +45,7 @@ public class EuroPlotter extends Application {
                         .collect(Collectors.toList())
         );
 
-        for (Flip observation : observations) {
+        for (Float observation : observations) {
             euro1.updateHypotheses(observation);
         }
 

@@ -65,7 +65,7 @@ public class ProbabilityMassFunctionNumeric<E extends Integer, F extends Float> 
     }
 
     public E percentileEvent(Float percentileValue) {
-        float percent = percentileValue.floatValue()/100F;
+        float percent = percentileValue.floatValue() / 100F;
         float runningTotal = 0;
 
         // TreeMap returs the value in order of the keys
@@ -76,6 +76,17 @@ public class ProbabilityMassFunctionNumeric<E extends Integer, F extends Float> 
             }
         }
         return null;
+    }
+
+    public E getMaximumLikelihoodEvent() {
+        return pmf.entrySet().stream().max(
+                (entry1, entry2)
+                        -> (entry1.getValue().floatValue() > entry2.getValue().floatValue() ? 1 : -1)
+        ) .get().getKey();
+    }
+
+    public F getMaximumLikelihoodValue() {
+        return pmf.values().stream().max(Float::compareTo).get();
     }
 
     @Override

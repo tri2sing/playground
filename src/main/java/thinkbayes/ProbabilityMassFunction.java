@@ -41,14 +41,10 @@ public class ProbabilityMassFunction<T> {
     }
 
     public T getMaximumLikelihoodEvent() {
-        return pmf.entrySet().stream()
-                .max(
-                        (entry1, entry2) -> (entry1.getValue() > entry2.getValue() ? 1 : -1)
-                )
-                .get().getKey();
+        return pmf.entrySet().stream().max(
+                (entry1, entry2) -> (entry1.getValue() > entry2.getValue() ? 1 : -1)
+        ).get().getKey();
 
-        // If you want to return max value
-        //return pmf.values().stream().max(Float::compareTo).get();
     }
 
     public float getMaximumLikelihoodValue() {

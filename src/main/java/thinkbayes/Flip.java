@@ -1,6 +1,6 @@
 package thinkbayes;
 
-public enum Flip {
-    HEADS,
-    TAILS;
+public class Flip {
+    public static final Float HEADS = 1F;
+    public static final Float TAILS = 0F;
 }
