@@ -18,6 +18,30 @@ public class MinCoinCountForSum {
         }
         return minCount[targetSum];
     }
+
+    private static double solveRecursive(int targetSum, int [] coinValues, double [] minCount) {
+        if (targetSum == 0) { return 0; }
+
+        for (int coinValue : coinValues) {
+            if (coinValue <= targetSum) {
+                Double intermediate = solveRecursive(targetSum - coinValue, coinValues, minCount);
+                if (intermediate + 1 < minCount[targetSum]) {
+                    minCount[targetSum] = intermediate + 1;
+                }
+            }
+        }
+        return minCount[targetSum];
+    }
+
+    public static double solveRecursive(int targetSum, int[] coinValues) {
+        double[] minCount = new double[targetSum + 1];
+        minCount[0] = 0;
+        for (int i = 1; i < targetSum + 1; i++) {
+            minCount[i] = Double.POSITIVE_INFINITY;
+        }
+        minCount[0] = 0;
+        return solveRecursive(targetSum, coinValues, minCount);
+    }
 }
 
 
