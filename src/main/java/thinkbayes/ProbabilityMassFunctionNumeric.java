@@ -1,6 +1,7 @@
 package thinkbayes;
 
 import java.util.Map;
+import java.util.Set;
 import java.util.TreeMap;
 import java.util.stream.Stream;
 
@@ -31,6 +32,10 @@ public class ProbabilityMassFunctionNumeric<E extends Integer, F extends Float> 
 
     public F getEvent(E event) {
         return pmf.get(event);
+    }
+
+    public Set<Map.Entry<E, F>> getEventFrequencySet() {
+        return pmf.entrySet();
     }
 
     public Stream<E> getEventStream() {
@@ -88,11 +93,24 @@ public class ProbabilityMassFunctionNumeric<E extends Integer, F extends Float> 
         return pmf.entrySet().stream().max(
                 (entry1, entry2)
                         -> (entry1.getValue().floatValue() > entry2.getValue().floatValue() ? 1 : -1)
-        ) .get().getKey();
+        ).get().getKey();
     }
 
     public F getMaximumLikelihoodValue() {
         return pmf.values().stream().max(Float::compareTo).get();
+    }
+
+    public ProbabilityMassFunctionNumeric<E, F> add(ProbabilityMassFunctionNumeric<E, F> that) {
+        ProbabilityMassFunctionNumeric<E, F> result = new ProbabilityMassFunctionNumeric<>();
+        for (Map.Entry<E, F> thisEntry : getEventFrequencySet()) {
+            for (Map.Entry<E, F> thatEntry : that.getEventFrequencySet()) {
+                result.increment(
+                        (E) Integer.valueOf(thisEntry.getKey().intValue() + thatEntry.getKey().intValue()),
+                        (F) Float.valueOf(thisEntry.getValue().floatValue() * thatEntry.getValue().floatValue())
+                );
+            }
+        }
+        return result;
     }
 
     @Override

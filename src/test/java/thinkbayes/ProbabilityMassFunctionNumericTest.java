@@ -5,7 +5,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import org.junit.Test;
 
 public class ProbabilityMassFunctionNumericTest {
-
     @Test
     public void testSetAndHasEvent() throws Exception {
         ProbabilityMassFunctionNumeric<Integer, Float> pmf =
@@ -96,6 +95,28 @@ public class ProbabilityMassFunctionNumericTest {
         }
         pmf.normalize();
         assertThat(pmf.getMaximumLikelihoodValue()).isEqualTo(5F/15F);
+    }
+
+    @Test
+    public void add() throws Exception {
+        ProbabilityMassFunctionNumeric<Integer, Float> pmf1 =
+                new ProbabilityMassFunctionNumeric<>();
+        for (int i = 1; i < 7; i++) {
+            pmf1.setEvent(i, 1F);
+        }
+        pmf1.normalize();
+
+        ProbabilityMassFunctionNumeric<Integer, Float> pmf2 =
+                new ProbabilityMassFunctionNumeric<>();
+        for (int i = 1; i < 7; i++) {
+            pmf2.setEvent(i, 1F);
+        }
+        pmf2.normalize();
+
+        ProbabilityMassFunctionNumeric<Integer, Float> pmf3 =
+                pmf1.add(pmf2);
+        assertThat(pmf3.getEvent(2)).isEqualTo(0.02777778f);
+        assertThat(pmf3.getEvent(7)).isEqualTo(0.16666667f);
     }
 
 }
