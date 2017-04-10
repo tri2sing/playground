@@ -32,7 +32,7 @@ public abstract class SuiteNumeric<H extends Integer, D extends Float> extends P
      */
     public void updateHypotheses(D data) {
         getEventStream().forEach(hypothesis -> {
-            mult((Integer) hypothesis, getLikelihood(data, (H) hypothesis));
+            multiply((Integer) hypothesis, getLikelihood(data, (H) hypothesis));
         });
         normalize();
     }

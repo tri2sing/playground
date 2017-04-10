@@ -46,7 +46,13 @@ public class ProbabilityMassFunctionNumeric<E extends Integer, F extends Float> 
         pmf.replaceAll((k, v) -> (F) Float.valueOf(v.floatValue() / valuesSum));
     }
 
-    public void mult(E event, F multiplier) {
+    public void increment(E event, F increment) {
+        F currentValue = pmf.getOrDefault(event, (F) Float.valueOf(0F));
+        F newValue = (F) Float.valueOf(currentValue.floatValue() + increment.floatValue());
+        pmf.put(event, newValue);
+    }
+
+    public void multiply(E event, F multiplier) {
         F currentValue = pmf.getOrDefault(event, (F) Float.valueOf(0F));
         F newValue = (F) Float.valueOf(currentValue.floatValue() * multiplier.floatValue());
         pmf.put(event, newValue);
