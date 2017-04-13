@@ -8,7 +8,7 @@ public class ProbabilityMassFunctionNumericTest {
     @Test
     public void testSetAndHasEvent() throws Exception {
         ProbabilityMassFunctionNumeric<Integer, Float> pmf =
-                new ProbabilityMassFunctionNumeric<>();
+                new ProbabilityMassFunctionNumeric<Integer, Float>();
         pmf.setEvent(1, 0.5F);
         assertThat(pmf.hasEvent(1)).isEqualTo(true);
     }
@@ -16,7 +16,7 @@ public class ProbabilityMassFunctionNumericTest {
     @Test
     public void testSetAndGetEvent() throws Exception {
         ProbabilityMassFunctionNumeric<Integer, Float> pmf =
-                new ProbabilityMassFunctionNumeric<>();
+                new ProbabilityMassFunctionNumeric<Integer, Float>();
         pmf.setEvent(1, 0.5F);
         assertThat(pmf.getEvent(1)).isEqualTo(0.5F);
     }
@@ -24,7 +24,7 @@ public class ProbabilityMassFunctionNumericTest {
     @Test
     public void testNormalize() throws Exception {
         ProbabilityMassFunctionNumeric<Integer, Float> pmf =
-                new ProbabilityMassFunctionNumeric<>();
+                new ProbabilityMassFunctionNumeric<Integer, Float>();
         for (int i = 1; i < 6; i++) {
             pmf.setEvent(i, (float) i);
         }
@@ -38,7 +38,7 @@ public class ProbabilityMassFunctionNumericTest {
     @Test
     public void increment() throws Exception {
         ProbabilityMassFunctionNumeric<Integer, Float> pmf =
-                new ProbabilityMassFunctionNumeric<>();
+                new ProbabilityMassFunctionNumeric<Integer, Float>();
         pmf.setEvent(1, 0.5F);
         pmf.increment(1, 0.25F);
         assertThat(pmf.getEvent(1)).isEqualTo(0.75F);
@@ -47,7 +47,7 @@ public class ProbabilityMassFunctionNumericTest {
     @Test
     public void multiply() throws Exception {
         ProbabilityMassFunctionNumeric<Integer, Float> pmf =
-                new ProbabilityMassFunctionNumeric<>();
+                new ProbabilityMassFunctionNumeric<Integer, Float>();
         pmf.setEvent(1, 0.5F);
         pmf.multiply(1, 0.25F);
         assertThat(pmf.getEvent(1)).isEqualTo(0.125F);
@@ -56,7 +56,7 @@ public class ProbabilityMassFunctionNumericTest {
     @Test
     public void mean() throws Exception {
         ProbabilityMassFunctionNumeric<Integer, Float> pmf =
-                new ProbabilityMassFunctionNumeric<>();
+                new ProbabilityMassFunctionNumeric<Integer, Float>();
         for (int i = 1; i < 6; i++) {
             pmf.setEvent(i, (float) i);
         }
@@ -67,7 +67,7 @@ public class ProbabilityMassFunctionNumericTest {
     @Test
     public void percentileEvent() throws Exception {
         ProbabilityMassFunctionNumeric<Integer, Float> pmf =
-                new ProbabilityMassFunctionNumeric<>();
+                new ProbabilityMassFunctionNumeric<Integer, Float>();
         for (int i = 1; i < 6; i++) {
             pmf.setEvent(i, (float) i);
         }
@@ -78,7 +78,7 @@ public class ProbabilityMassFunctionNumericTest {
     @Test
     public void getMaximumLikelihoodEvent() throws Exception {
         ProbabilityMassFunctionNumeric<Integer, Float> pmf =
-                new ProbabilityMassFunctionNumeric<>();
+                new ProbabilityMassFunctionNumeric<Integer, Float>();
         for (int i = 1; i < 6; i++) {
             pmf.setEvent(i, (float) i);
         }
@@ -89,7 +89,7 @@ public class ProbabilityMassFunctionNumericTest {
     @Test
     public void getMaximumLikelihoodValue() throws Exception {
         ProbabilityMassFunctionNumeric<Integer, Float> pmf =
-                new ProbabilityMassFunctionNumeric<>();
+                new ProbabilityMassFunctionNumeric<Integer, Float>();
         for (int i = 1; i < 6; i++) {
             pmf.setEvent(i, (float) i);
         }
@@ -100,14 +100,14 @@ public class ProbabilityMassFunctionNumericTest {
     @Test
     public void add() throws Exception {
         ProbabilityMassFunctionNumeric<Integer, Float> pmf1 =
-                new ProbabilityMassFunctionNumeric<>();
+                new ProbabilityMassFunctionNumeric<Integer, Float>();
         for (int i = 1; i < 7; i++) {
             pmf1.setEvent(i, 1F);
         }
         pmf1.normalize();
 
         ProbabilityMassFunctionNumeric<Integer, Float> pmf2 =
-                new ProbabilityMassFunctionNumeric<>();
+                new ProbabilityMassFunctionNumeric<Integer, Float>();
         for (int i = 1; i < 7; i++) {
             pmf2.setEvent(i, 1F);
         }

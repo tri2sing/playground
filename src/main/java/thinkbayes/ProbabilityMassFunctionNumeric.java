@@ -101,7 +101,7 @@ public class ProbabilityMassFunctionNumeric<E extends Integer, F extends Float> 
     }
 
     public ProbabilityMassFunctionNumeric<E, F> add(ProbabilityMassFunctionNumeric<E, F> that) {
-        ProbabilityMassFunctionNumeric<E, F> result = new ProbabilityMassFunctionNumeric<>();
+        ProbabilityMassFunctionNumeric<E, F> result = new ProbabilityMassFunctionNumeric<E, F>();
         for (Map.Entry<E, F> thisEntry : getEventFrequencySet()) {
             for (Map.Entry<E, F> thatEntry : that.getEventFrequencySet()) {
                 result.increment(
