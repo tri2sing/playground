@@ -5,13 +5,13 @@ import java.util.Collection;
 
 public class GenericMethods {
 
-    public static <T> int countOccurences(Collection<T> collection, T itemToCount) {
+    public static <T extends Comparable> int countOccurences(Collection<T> collection, T itemToCount) {
         if (itemToCount == null) {
             return collection.size();
         }
         int count = 0;
         for (T item : collection) {
-            if (item == itemToCount) {
+            if (item.compareTo(itemToCount) == 0) {
                 count++;
             }
         }
