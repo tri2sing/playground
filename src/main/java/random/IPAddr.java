@@ -1,4 +1,4 @@
-package examples;
+package random;
 
 import java.net.InetAddress;
 import java.net.Inet4Address;

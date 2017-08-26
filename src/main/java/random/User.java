@@ -1,4 +1,4 @@
-package examples;
+package random;
 
 /**
  * Builder classes are similar to constructors. They allow you to reduce the

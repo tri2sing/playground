@@ -6,8 +6,9 @@ package trees;
 // Find nodes within a range of keys
 // Statistics trees
 // Find kth element in tree
-// FInd rand of element x
+// Find rand of element x
 // Find median
+// Find common ancestor
 
 public class BinarySearchTree<Key extends Comparable<Key>, Value> {
 

@@ -1,4 +1,4 @@
-package examples;
+package random;
 
 import java.util.List;
 import java.util.stream.Collectors;

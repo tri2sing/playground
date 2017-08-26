@@ -2,6 +2,8 @@ package examples;
 
 import org.junit.Test;
 
+import random.StaticMemberNewInstance;
+
 public class StaticMemberNewInstanceTest {
 
     @Test
