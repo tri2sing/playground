@@ -12,7 +12,9 @@ public class TwoDimensionalArray {
             for(int j = 0; j < array[i].length; j++){
                 System.out.println("\t" + array[i][j]);
             }
-
+        }
+        for (String[] pair : array) {
+            System.out.println(Arrays.toString(pair));
         }
     }
 }
