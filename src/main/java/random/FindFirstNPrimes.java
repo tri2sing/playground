@@ -3,11 +3,6 @@ package random;
 import java.util.ArrayList;
 
 public class FindFirstNPrimes {
-    // This is the text editor interface.
-// Anything you type or change here will be seen by the other person in real time.
-
-// implement method that prints the first 100 prime numbers
-// A prime number (or a prime) is a natural number greater than 1 that has no positive divisors other than 1 and itself.
 
     private static ArrayList<Integer> foundPrimes = new ArrayList<>();
 
