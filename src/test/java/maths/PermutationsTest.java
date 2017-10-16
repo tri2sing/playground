@@ -19,25 +19,25 @@ public class PermutationsTest {
     }
 
     @Test
-    public void permuteIntegers() {
+    public void integerPermutations() {
         List<Integer> input = new ArrayList<>();
         for(int i = 0; i < 3; i++) {
             input.add(i);
         }
-        Permutations perm = new Permutations();
+        Permutations<Integer> perm = new Permutations();
         List<List<Integer>> result = perm.getPermutations(input);
         Integer [][] expected = new Integer[][] { {0, 1, 2}, {0, 2, 1}, {1, 0, 2}, {1, 2, 0}, {2, 0 , 1}, {2, 1, 0},};
         assertThat(result).isEqualTo(arrayOfArraysToListofLists(expected));
     }
 
     @Test
-    public void permuteCharacters() {
+    public void characterPermutations() {
         List<Character> input = new ArrayList<>();
         for(char i = 'a'; i < 'd'; i++) {
             input.add(i);
         }
-        Permutations perm = new Permutations();
-        List<List<Integer>> result = perm.getPermutations(input);
+        Permutations<Character> perm = new Permutations();
+        List<List<Character>> result = perm.getPermutations(input);
         Character [][] expected = new Character[][] {
                 {'a', 'b', 'c'}, {'a', 'c', 'b'},
                 {'b', 'a', 'c'}, {'b', 'c', 'a'},
