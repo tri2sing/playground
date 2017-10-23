@@ -1,4 +1,4 @@
-package threads;
+package threads.producerconsumersynchronized;
 
 public class MessageMain {
     public static void main(String[] args) {

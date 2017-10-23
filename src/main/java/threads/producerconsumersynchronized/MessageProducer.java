@@ -1,4 +1,4 @@
-package threads;
+package threads.producerconsumersynchronized;
 
 import java.util.Random;
 

@@ -1,4 +1,4 @@
-package threads;
+package threads.producerconsumersynchronized;
 
 public class MessageBox {
     private String message; // sent from producer to consumer.
