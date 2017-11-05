@@ -33,13 +33,33 @@ public class BinarySearchTree<Key extends Comparable<Key>, Value> {
         root = null;
     }
 
+    public int size() {
+        return size(root);
+    }
+
+    public void insert(Key key, Value value) {
+        root = insert(root, key, value);
+    }
+
+    public Node find(Key key) {
+        return find(root, key);
+    }
+
+    public Node findNextBigger(Key key) {
+        return null;
+    }
+
+    public Node findPreviousSmaller(Key key) {
+        return null;
+    }
+
+    public void printTree() {
+        printTree(root);
+    }
+
     private int size(Node node) {
         if (node == null) return 0;
         else return node.size;
-    }
-
-    public int size() {
-        return size(root);
     }
 
     private Node insert(Node node, Key key, Value value) {
@@ -54,8 +74,11 @@ public class BinarySearchTree<Key extends Comparable<Key>, Value> {
         return node;
     }
 
-    public void insert(Key key, Value value) {
-        root = insert(root, key, value);
+    private Node find(Node node, Key key) {
+        if(node == null) return null;
+        if(node.key == key) return node;
+        if(key.compareTo(node.key) < 0) return find(node.left, key);
+        else return find(node.right, key);
     }
 
     private void printTree(Node node) {
@@ -63,10 +86,6 @@ public class BinarySearchTree<Key extends Comparable<Key>, Value> {
         printTree(node.left);
         System.out.println("Key = " + node.key + ", Value = " + node.value);
         printTree(node.right);
-    }
-
-    void printTree() {
-        printTree(root);
     }
 
 }
