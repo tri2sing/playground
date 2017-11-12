@@ -10,7 +10,9 @@ package trees;
 // Find median
 // Find common ancestor
 
-public class BinarySearchTree<Key extends Comparable<Key>, Value> {
+import java.util.function.Supplier;
+
+public class BinarySearchTree<Key extends Number, Value> {
 
     private class Node {
         private Key key;
@@ -41,15 +43,19 @@ public class BinarySearchTree<Key extends Comparable<Key>, Value> {
         root = insert(root, key, value);
     }
 
-    public Node find(Key key) {
-        return find(root, key);
+    public Value find(Key key) {
+        Node result = find(root, key);
+        if (result == null) return null;
+        else return result.value;
     }
 
-    public Node findNextBigger(Key key) {
-        return null;
+    public Key findCeiling(Key key) {
+        Node result = findCeiling(root, key);
+        if (result == null) return null;
+        else return result.key;
     }
 
-    public Node findPreviousSmaller(Key key) {
+    public Key findFloor(Key key) {
         return null;
     }
 
@@ -66,7 +72,7 @@ public class BinarySearchTree<Key extends Comparable<Key>, Value> {
         if (node == null) {
             return new Node(key, value, 1);
         }
-        int compare = key.compareTo(node.key);
+        int compare = key.intValue() - node.key.intValue();
         if (compare < 0) node.left = insert(node.left, key, value);
         else if (compare > 0) node.right = insert(node.right, key, value);
         else node.value = value;
@@ -75,10 +81,23 @@ public class BinarySearchTree<Key extends Comparable<Key>, Value> {
     }
 
     private Node find(Node node, Key key) {
-        if(node == null) return null;
-        if(node.key == key) return node;
-        if(key.compareTo(node.key) < 0) return find(node.left, key);
+        if (node == null) return null;
+        if (node.key == key) return node;
+        if (key.intValue() - node.key.intValue() < 0) return find(node.left, key);
         else return find(node.right, key);
+    }
+
+    private Node findCeiling(Node node, Key key) {
+        if (node == null)  {
+            return null;
+        }
+        int currentdiff = node.key.intValue() - key.intValue();
+        if (currentdiff <= 0) {
+            return findCeiling(node.right, key);
+        }
+        Node left = findCeiling(node.left, key);
+        if (left == null) return node;
+        return left.key.intValue() < node.key.intValue()? left : node;
     }
 
     private void printTree(Node node) {
