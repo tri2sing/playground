@@ -10,8 +10,6 @@ package trees;
 // Find median
 // Find common ancestor
 
-import java.util.function.Supplier;
-
 public class BinarySearchTree<Key extends Number, Value> {
 
     private class Node {
