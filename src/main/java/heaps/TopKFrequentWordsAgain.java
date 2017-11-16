@@ -64,16 +64,4 @@ public class TopKFrequentWordsAgain {
 
         return deque;
     }
-
-    public static void main(String[] args) {
-        String[] input = new String[]{"t4", "t1", "t1", "t1", "t2", "t2", "t3"};
-        TopKFrequentWordsAgain s = new TopKFrequentWordsAgain();
-        List<HeapNode> result = s.topK(input, 2);
-
-        for (HeapNode node : result) {
-            System.out.println(node.getTerm() + ": " + node.getFreq());
-        }
-    }
-
-
 }
