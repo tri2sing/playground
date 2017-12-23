@@ -50,7 +50,6 @@ public class BinarySearchTreeTest {
     public void find_ceiling_for_existing_key() {
         Integer key = bst.findCeiling(7);
         assertThat(key.intValue()).isEqualTo(8);
-        System.out.format("\n\n");
         key = bst1.findCeiling(7);
         assertThat(key.intValue()).isEqualTo(8);
     }
