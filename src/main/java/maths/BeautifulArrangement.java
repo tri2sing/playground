@@ -45,14 +45,45 @@ public class BeautifulArrangement {
         return;
     }
 
+    private void swap(int[] nums, int i, int j) {
+        int temp = nums[i];
+        nums[i] = nums[j];
+        nums[j] = temp;
+    }
+
+    private void countArrangement(int[] nums, int start, int size) {
+        if (start == size) {
+            count++;
+            return;
+        }
+
+        for (int i = start; i < size; i++) {
+            swap(nums, start, i);
+            // only if a new number in this position is acceptable,
+            // then continue to finding out the rest of the permutation.
+            if ((nums[start] % (start + 1) == 0) || ((start + 1) % nums[start] == 0)) {
+                countArrangement(nums, start + 1, size);
+            }
+            swap(nums, i, start);
+        }
+    }
+
 
     public int countArrangement(int N) {
+
         this.N = N;
+        /*
         StringBuffer sb = new StringBuffer();
         for (int i = 1; i <= N; i++) {
             sb.append(i);
         }
         generateArrangement("", sb.toString());
+        */
+        int[] array = new int[N];
+        for (int i = 1; i <= N; i++) {
+            array[i - 1] = i;
+        }
+        countArrangement(array, 0, N);
         return this.count;
     }
 }
