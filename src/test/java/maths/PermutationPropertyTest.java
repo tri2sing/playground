@@ -4,10 +4,10 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.Test;
 
-public class BeautifulArrangementTest {
+public class PermutationPropertyTest {
     @Test
     public void test1() {
-        BeautifulArrangement ba = new BeautifulArrangement();
+        PermutationProperty ba = new PermutationProperty();
         assertThat(ba.countArrangement(2)).isEqualTo(2);
     }
 }

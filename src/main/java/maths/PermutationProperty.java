@@ -10,7 +10,7 @@ import java.util.Arrays;
  * Now given N, how many beautiful arrangements can you construct?
  */
 
-public class BeautifulArrangement {
+public class PermutationProperty {
     private int count = 0;
     int N = 0;
 
